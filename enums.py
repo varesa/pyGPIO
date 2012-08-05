@@ -19,5 +19,5 @@ GPIO_25 = 25
 
 
 #Port Direction enums:
-IN  = 0
-OUT = 1
+IN  = "in"
+OUT = "out"
