@@ -22,6 +22,13 @@ def isExported(port):
 	return True
     return False
 
+def export(port):
+    if port not in GPIO_PINS:
+	raise Exception('Unknown port')
+    if not isExported(port):
+	with open(join(GPIO_PATH, "export"), "w") as dir_file:
+	    dir_file.write(port)
+
 def getDirection(port):
     if port not in GPIO_PINS:
 	raise Exception('Unknown port')
