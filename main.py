@@ -27,6 +27,18 @@ def getDirection(port):
 	raise Exception('Unknown port')
     if not isExported(port):
 	raise Exception('The port has not been exported')
+
     with open(join(GPIO_PATH, "gpio" + str(port), "direction")) as dir_file:
 	direction = dir_file.read()
 	return direction.strip()
+
+def setDirection(port, direction):
+    if port not in GPIO_PINS:
+	raise Exception('Unknown port')
+    if direction not in DIRECTIONS:
+	raise Exception('Invalid direction')
+    if not isExported(port):
+	raise Exception('The port has not been exported')
+
+    with open(join(GPIO_PATH, "gpio" + str(port), "direction"), "w") as dir_file:
+	dir_file.write(direction)
